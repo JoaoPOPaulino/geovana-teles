@@ -44,7 +44,7 @@ export default function Footer() {
               Contato
             </p>
             <a
-              href="https://wa.me/5563999999999"
+              href="https://wa.me/5563992256085"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-gray-400 hover:text-rose-400 transition-colors"
@@ -52,7 +52,7 @@ export default function Footer() {
               WhatsApp
             </a>
             <a
-              href="https://instagram.com/geovanateles"
+              href="https://instagram.com/geovana_.teles"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-gray-400 hover:text-rose-400 transition-colors"
