@@ -29,7 +29,7 @@ export default function Servicos() {
           <p className="text-rose-400 text-sm font-medium tracking-widest uppercase mb-4">
             Serviços
           </p>
-          <h2 className="text-3xl font-semibold text-gray-800">
+          <h2 className="font-display text-4xl font-medium text-gray-800">
             O que eu ofereço
           </h2>
         </div>

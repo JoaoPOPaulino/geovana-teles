@@ -18,7 +18,7 @@ export default function Sobre() {
             Sobre mim
           </p>
 
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6 leading-snug">
+          <h2 className="font-display text-4xl font-medium text-gray-800 mb-6 leading-snug">
             Cuidado com a pele que transforma
           </h2>
 
