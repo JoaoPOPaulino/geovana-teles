@@ -48,7 +48,7 @@ export default function Sobre() {
             </h2>
 
             <p className="text-gray-500 leading-relaxed mb-6 font-light">
-              Olá! Sou Geovana Teles, esteticista especializada em limpeza de pele
+              Olá! Sou Geovana Teles, especializada em limpeza de pele
               profissional. Acredito que cuidar da pele vai além da estética — é
               um ato de amor próprio.
             </p>
