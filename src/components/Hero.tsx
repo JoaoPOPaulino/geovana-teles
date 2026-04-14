@@ -42,7 +42,7 @@ export default function Hero() {
           Agendar agora
         </Link>
         <a
-          href="https://wa.me/5563999999999"
+          href="https://wa.me/556392858922"
           target="_blank"
           rel="noopener noreferrer"
           className="border border-rose-300 text-rose-400 px-10 py-4 rounded-full text-sm font-medium tracking-wide hover:bg-white transition-all hover:shadow-md hover:-translate-y-0.5"

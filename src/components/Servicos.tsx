@@ -5,6 +5,7 @@ interface Servico {
   duracao: string
   preco: string
   destaque?: boolean
+  slug: string
 }
 
 const servicos: Servico[] = [
@@ -14,6 +15,7 @@ const servicos: Servico[] = [
     descricao: 'Higienização profunda, extração de cravos e hidratação. Ideal para manutenção mensal da pele.',
     duracao: '60 min',
     preco: 'R$ 120',
+    slug: 'limpeza-de-pele-simples',
   },
   {
     numero: '02',
@@ -22,6 +24,7 @@ const servicos: Servico[] = [
     duracao: '90 min',
     preco: 'R$ 180',
     destaque: true,
+    slug: 'limpeza-de-pele-profunda',
   },
   {
     numero: '03',
@@ -29,18 +32,21 @@ const servicos: Servico[] = [
     descricao: 'Inclui peeling químico para renovação celular. Resultado mais intenso com pele visivelmente mais uniforme.',
     duracao: '120 min',
     preco: 'R$ 250',
+    slug: 'limpeza-de-pele-com-peeling',
   },
 ]
 
-export default function Servicos() {
+interface ServicosProps {
+  onSelectServico: (slug: string) => void
+}
+
+export default function Servicos({ onSelectServico }: ServicosProps) {
   return (
     <section className="py-32 px-6 bg-white relative overflow-hidden">
-
       {/* Elemento decorativo de fundo */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-rose-50 opacity-60 translate-x-1/2" />
 
       <div className="max-w-4xl mx-auto relative">
-
         {/* Cabeçalho */}
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-6">
@@ -59,8 +65,9 @@ export default function Servicos() {
           {servicos.map((servico) => (
             <div
               key={servico.titulo}
+              onClick={() => onSelectServico(servico.slug)}
               className={`
-                relative rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 hover:-translate-y-1
+                cursor-pointer relative rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 hover:-translate-y-1
                 ${servico.destaque
                   ? 'bg-rose-400 text-white shadow-xl shadow-rose-200'
                   : 'bg-white border border-rose-100 hover:border-rose-200 hover:shadow-lg hover:shadow-rose-50'
@@ -98,11 +105,9 @@ export default function Servicos() {
                   {servico.preco}
                 </span>
               </div>
-
             </div>
           ))}
         </div>
-
       </div>
     </section>
   )

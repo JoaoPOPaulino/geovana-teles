@@ -44,7 +44,7 @@ export default function Footer() {
               Contato
             </p>
             <a
-              href="https://wa.me/5563992256085"
+              href="https://wa.me/556392858922"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-gray-400 hover:text-rose-400 transition-colors"

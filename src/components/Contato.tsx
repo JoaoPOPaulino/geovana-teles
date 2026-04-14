@@ -25,9 +25,9 @@ const infos: InfoContato[] = [
       </svg>
     ),
     titulo: 'WhatsApp',
-    valor: '(63) 9 9225-6085',
+    valor: '(63) 9 9285-8922',
     descricao: 'Respondemos rapidamente',
-    link: 'https://wa.me/5563992256085',
+    link: 'https://wa.me/+556392858922',
   },
   {
     icone: (
@@ -116,7 +116,7 @@ export default function Contato() {
               Agende seu horário agora e dê o primeiro passo para uma pele mais saudável e bonita.
             </p>
             <a
-              href="https://wa.me/5563992256085"
+              href="https://wa.me/+556392858922"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-rose-400 px-10 py-4 rounded-full text-sm font-medium tracking-wide hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
