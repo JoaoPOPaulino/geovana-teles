@@ -43,19 +43,18 @@ interface ServicosProps {
 export default function Servicos({ onSelectServico }: ServicosProps) {
   return (
     <section className="py-32 px-6 bg-white relative overflow-hidden">
-      {/* Elemento decorativo de fundo */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-rose-50 opacity-60 translate-x-1/2" />
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-golden-50 opacity-60 translate-x-1/2" />
 
       <div className="max-w-4xl mx-auto relative">
         {/* Cabeçalho */}
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-px bg-rose-300" />
-            <p className="text-rose-400 text-xs font-medium tracking-[0.3em] uppercase">
+            <div className="w-12 h-px bg-golden-400" />
+            <p className="text-golden-600 text-xs font-medium tracking-[0.3em] uppercase">
               Serviços
             </p>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl font-medium text-gray-800">
+          <h2 className="font-display text-4xl md:text-5xl font-medium text-mauve-900">
             O que eu ofereço
           </h2>
         </div>
@@ -69,39 +68,39 @@ export default function Servicos({ onSelectServico }: ServicosProps) {
               className={`
                 cursor-pointer relative rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 hover:-translate-y-1
                 ${servico.destaque
-                  ? 'bg-rose-400 text-white shadow-xl shadow-rose-200'
-                  : 'bg-white border border-rose-100 hover:border-rose-200 hover:shadow-lg hover:shadow-rose-50'
+                  ? 'bg-bordeaux-600 text-white shadow-xl shadow-bordeaux-100'
+                  : 'bg-white border border-bordeaux-100 hover:border-bordeaux-200 hover:shadow-lg hover:shadow-bordeaux-50'
                 }
               `}
             >
               {/* Badge destaque */}
               {servico.destaque && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-4 py-1 rounded-full tracking-widest uppercase">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-mauve-900 text-white text-xs px-4 py-1 rounded-full tracking-widest uppercase">
                   Mais popular
                 </div>
               )}
 
               {/* Número */}
-              <span className={`font-display text-5xl font-medium leading-none ${servico.destaque ? 'text-rose-200' : 'text-rose-100'}`}>
+              <span className={`font-display text-5xl font-medium leading-none ${servico.destaque ? 'text-bordeaux-200' : 'text-bordeaux-100'}`}>
                 {servico.numero}
               </span>
 
               {/* Título e descrição */}
               <div className="flex flex-col gap-3 flex-1">
-                <h3 className={`font-medium text-lg leading-snug ${servico.destaque ? 'text-white' : 'text-gray-800'}`}>
+                <h3 className={`font-medium text-lg leading-snug ${servico.destaque ? 'text-white' : 'text-mauve-900'}`}>
                   {servico.titulo}
                 </h3>
-                <p className={`text-sm leading-relaxed ${servico.destaque ? 'text-rose-100' : 'text-gray-400'}`}>
+                <p className={`text-sm leading-relaxed ${servico.destaque ? 'text-bordeaux-100' : 'text-mauve-800 opacity-60'}`}>
                   {servico.descricao}
                 </p>
               </div>
 
               {/* Rodapé do card */}
-              <div className={`flex items-center justify-between pt-6 border-t ${servico.destaque ? 'border-rose-300' : 'border-rose-50'}`}>
-                <span className={`text-sm ${servico.destaque ? 'text-rose-200' : 'text-gray-300'}`}>
+              <div className={`flex items-center justify-between pt-6 border-t ${servico.destaque ? 'border-bordeaux-400' : 'border-bordeaux-50'}`}>
+                <span className={`text-sm ${servico.destaque ? 'text-bordeaux-200' : 'text-mauve-800 opacity-40'}`}>
                   {servico.duracao}
                 </span>
-                <span className={`font-display text-2xl font-medium ${servico.destaque ? 'text-white' : 'text-rose-400'}`}>
+                <span className={`font-display text-2xl font-medium ${servico.destaque ? 'text-white' : 'text-bordeaux-600'}`}>
                   {servico.preco}
                 </span>
               </div>
