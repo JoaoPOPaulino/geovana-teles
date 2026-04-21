@@ -1,49 +1,35 @@
 interface Servico {
-  numero: string
-  titulo: string
-  descricao: string
-  duracao: string
-  preco: string
-  destaque?: boolean
-  slug: string
+  numero: string;
+  titulo: string;
+  descricao: string;
+  duracao: string;
+  preco: string;
+  destaque?: boolean;
+  slug: string;
 }
 
 const servicos: Servico[] = [
   {
-    numero: '01',
-    titulo: 'Limpeza de Pele Simples',
-    descricao: 'Higienização profunda, extração de cravos e hidratação. Ideal para manutenção mensal da pele.',
-    duracao: '60 min',
-    preco: 'R$ 120',
-    slug: 'limpeza-de-pele-simples',
-  },
-  {
-    numero: '02',
-    titulo: 'Limpeza de Pele Profunda',
-    descricao: 'Esfoliação, vapor, extração completa e máscara calmante. Recomendada para peles com mais impurezas.',
-    duracao: '90 min',
-    preco: 'R$ 180',
+    numero: "01",
+    titulo: "Limpeza de Pele",
+    descricao:
+      "Higienização profunda, extração de cravos e hidratação. Ideal para manutenção mensal da pele.",
+    duracao: "60 min",
+    preco: "R$ 120",
+    slug: "limpeza-de-pele-simples",
     destaque: true,
-    slug: 'limpeza-de-pele-profunda',
   },
-  {
-    numero: '03',
-    titulo: 'Limpeza de Pele com Peeling',
-    descricao: 'Inclui peeling químico para renovação celular. Resultado mais intenso com pele visivelmente mais uniforme.',
-    duracao: '120 min',
-    preco: 'R$ 250',
-    slug: 'limpeza-de-pele-com-peeling',
-  },
-]
+];
 
 interface ServicosProps {
-  onSelectServico: (slug: string) => void
+  onSelectServico: (slug: string) => void;
 }
 
 export default function Servicos({ onSelectServico }: ServicosProps) {
   return (
-    <section className="py-32 px-6 bg-white relative overflow-hidden">
+    <section className="py-32 px-6 bg-mauve-50 relative overflow-hidden">
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-golden-50 opacity-60 translate-x-1/2" />
+      <div className="absolute left-0 bottom-0 w-48 h-48 rounded-full bg-bordeaux-50 opacity-40 -translate-x-1/2 translate-y-1/2" />
 
       <div className="max-w-4xl mx-auto relative">
         {/* Cabeçalho */}
@@ -59,55 +45,97 @@ export default function Servicos({ onSelectServico }: ServicosProps) {
           </h2>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Layout adaptativo — centralizado quando há poucos itens */}
+        <div
+          className={`grid gap-6 ${servicos.length === 1 ? "grid-cols-1 max-w-md" : servicos.length === 2 ? "grid-cols-1 md:grid-cols-2 max-w-2xl" : "grid-cols-1 md:grid-cols-3"}`}
+        >
           {servicos.map((servico) => (
             <div
-              key={servico.titulo}
+              key={servico.slug}
               onClick={() => onSelectServico(servico.slug)}
               className={`
-                cursor-pointer relative rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 hover:-translate-y-1
-                ${servico.destaque
-                  ? 'bg-bordeaux-600 text-white shadow-xl shadow-bordeaux-100'
-                  : 'bg-white border border-bordeaux-100 hover:border-bordeaux-200 hover:shadow-lg hover:shadow-bordeaux-50'
+                cursor-pointer relative rounded-2xl p-10 flex flex-col gap-6 transition-all duration-300 hover:-translate-y-1
+                ${
+                  servico.destaque
+                    ? "bg-bordeaux-600 text-white shadow-xl shadow-bordeaux-100"
+                    : "bg-white border border-bordeaux-100 hover:border-bordeaux-200 hover:shadow-lg hover:shadow-bordeaux-50"
                 }
               `}
             >
-              {/* Badge destaque */}
               {servico.destaque && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-mauve-900 text-white text-xs px-4 py-1 rounded-full tracking-widest uppercase">
-                  Mais popular
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-golden-400 text-white text-xs px-5 py-1 rounded-full tracking-widest uppercase whitespace-nowrap">
+                  Serviço em destaque
                 </div>
               )}
 
               {/* Número */}
-              <span className={`font-display text-5xl font-medium leading-none ${servico.destaque ? 'text-bordeaux-200' : 'text-bordeaux-100'}`}>
+              <span
+                className={`font-display text-6xl font-medium leading-none ${servico.destaque ? "text-bordeaux-400" : "text-bordeaux-100"}`}
+              >
                 {servico.numero}
               </span>
 
-              {/* Título e descrição */}
+              {/* Conteúdo */}
               <div className="flex flex-col gap-3 flex-1">
-                <h3 className={`font-medium text-lg leading-snug ${servico.destaque ? 'text-white' : 'text-mauve-900'}`}>
+                <h3
+                  className={`font-display text-2xl font-medium leading-snug ${servico.destaque ? "text-white" : "text-mauve-900"}`}
+                >
                   {servico.titulo}
                 </h3>
-                <p className={`text-sm leading-relaxed ${servico.destaque ? 'text-bordeaux-100' : 'text-mauve-800 opacity-60'}`}>
+                <p
+                  className={`text-sm leading-relaxed ${servico.destaque ? "text-bordeaux-100" : "text-mauve-800 opacity-60"}`}
+                >
                   {servico.descricao}
                 </p>
               </div>
 
-              {/* Rodapé do card */}
-              <div className={`flex items-center justify-between pt-6 border-t ${servico.destaque ? 'border-bordeaux-400' : 'border-bordeaux-50'}`}>
-                <span className={`text-sm ${servico.destaque ? 'text-bordeaux-200' : 'text-mauve-800 opacity-40'}`}>
+              {/* O que está incluído */}
+              <div
+                className={`flex flex-col gap-2 py-6 border-y ${servico.destaque ? "border-bordeaux-400" : "border-bordeaux-50"}`}
+              >
+                {[
+                  "Higienização profunda",
+                  "Extração de cravos",
+                  "Máscara hidratante",
+                  "Protetor solar",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <div
+                      className={`w-1 h-1 rounded-full ${servico.destaque ? "bg-golden-400" : "bg-bordeaux-300"}`}
+                    />
+                    <span
+                      className={`text-xs ${servico.destaque ? "text-bordeaux-100" : "text-mauve-800 opacity-60"}`}
+                    >
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Rodapé */}
+              <div className="flex items-center justify-between">
+                <span
+                  className={`text-sm ${servico.destaque ? "text-bordeaux-200" : "text-mauve-800 opacity-40"}`}
+                >
                   {servico.duracao}
                 </span>
-                <span className={`font-display text-2xl font-medium ${servico.destaque ? 'text-white' : 'text-bordeaux-600'}`}>
+                <span
+                  className={`font-display text-3xl font-medium ${servico.destaque ? "text-golden-200" : "text-bordeaux-600"}`}
+                >
                   {servico.preco}
                 </span>
               </div>
+
+              {/* Botão */}
+              <button
+                className={`w-full py-3 rounded-full text-sm font-medium tracking-wide transition-all ${servico.destaque ? "bg-white text-bordeaux-600 hover:bg-golden-50" : "bg-bordeaux-600 text-white hover:bg-bordeaux-800"}`}
+              >
+                Agendar agora
+              </button>
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
