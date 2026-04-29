@@ -1,26 +1,26 @@
-import { Link, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const links = [
-  { label: 'Início', to: '/' },
-  { label: 'Agendamento', to: '/agendamento' },
-  { label: 'Contato', to: '/contato' },
-]
+  { label: "Início", to: "/" },
+  { label: "Agendamento", to: "/agendamento" },
+  { label: "Contato", to: "/contato" },
+  { label: "Catálogo", to: "/catalogo" }
+];
 
 export default function Header() {
-  const { pathname } = useLocation()
-  const [menuAberto, setMenuAberto] = useState(false)
+  const { pathname } = useLocation();
+  const [menuAberto, setMenuAberto] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 px-6 py-4 flex items-center justify-between bg-white/80 backdrop-blur-md border-b border-bordeaux-100/50">
-
       {/* Logo */}
       <Link to="/" className="flex flex-col leading-none">
         <span className="font-display text-xl font-medium text-mauve-900 tracking-wide">
           Geovana Teles
         </span>
         <span className="text-xs text-golden-600 tracking-[0.2em] uppercase font-light">
-          Estética Facial
+          Estética & Bem-estar
         </span>
       </Link>
 
@@ -31,9 +31,10 @@ export default function Header() {
             key={link.to}
             to={link.to}
             className={`text-sm transition-colors relative py-1
-              ${pathname === link.to
-                ? 'text-bordeaux-600'
-                : 'text-mauve-800 opacity-60 hover:opacity-100 hover:text-bordeaux-600'
+              ${
+                pathname === link.to
+                  ? "text-bordeaux-600"
+                  : "text-mauve-800 opacity-60 hover:opacity-100 hover:text-bordeaux-600"
               }
             `}
           >
@@ -59,11 +60,17 @@ export default function Header() {
       <button
         onClick={() => setMenuAberto(!menuAberto)}
         className="md:hidden flex flex-col gap-1.5 p-1"
-        aria-label={menuAberto ? 'Fechar menu' : 'Abrir menu'}
+        aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
       >
-        <span className={`w-6 h-px bg-mauve-800 transition-all duration-300 ${menuAberto ? 'rotate-45 translate-y-2' : ''}`} />
-        <span className={`w-6 h-px bg-mauve-800 transition-all duration-300 ${menuAberto ? 'opacity-0' : ''}`} />
-        <span className={`w-6 h-px bg-mauve-800 transition-all duration-300 ${menuAberto ? '-rotate-45 -translate-y-2' : ''}`} />
+        <span
+          className={`w-6 h-px bg-mauve-800 transition-all duration-300 ${menuAberto ? "rotate-45 translate-y-2" : ""}`}
+        />
+        <span
+          className={`w-6 h-px bg-mauve-800 transition-all duration-300 ${menuAberto ? "opacity-0" : ""}`}
+        />
+        <span
+          className={`w-6 h-px bg-mauve-800 transition-all duration-300 ${menuAberto ? "-rotate-45 -translate-y-2" : ""}`}
+        />
       </button>
 
       {/* Menu mobile */}
@@ -75,7 +82,7 @@ export default function Header() {
               to={link.to}
               onClick={() => setMenuAberto(false)}
               className={`text-sm py-2 border-b border-bordeaux-50 last:border-0
-                ${pathname === link.to ? 'text-bordeaux-600' : 'text-mauve-800'}
+                ${pathname === link.to ? "text-bordeaux-600" : "text-mauve-800"}
               `}
             >
               {link.label}
@@ -90,7 +97,6 @@ export default function Header() {
           </Link>
         </div>
       )}
-
     </header>
-  )
+  );
 }

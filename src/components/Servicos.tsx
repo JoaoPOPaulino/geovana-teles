@@ -6,6 +6,7 @@ interface Servico {
   preco: string;
   destaque?: boolean;
   slug: string;
+  inclusos: string[];
 }
 
 const servicos: Servico[] = [
@@ -18,9 +19,59 @@ const servicos: Servico[] = [
     preco: "R$ 120",
     slug: "limpeza-de-pele-simples",
     destaque: true,
+    inclusos: [
+      "Higienização profunda",
+      "Extração de cravos",
+      "Recuperação da barreira cutânea",
+      "Personalização do protocolo conforme o tipo de pele",
+    ],
+  },
+  {
+    numero: "02",
+    titulo: "Massagem Relaxante",
+    descricao:
+      "Técnica suave que alivia tensões musculares e promove bem-estar. Perfeita para quem busca relaxamento profundo.",
+    duracao: "60 min",
+    preco: "R$ 150",
+    slug: "massagem-relaxante",
+    inclusos: [
+      "Óleos essenciais",
+      "Ambiente climatizado",
+      "Técnica de relaxamento",
+      "Alívio de tensões",
+    ],
+  },
+  {
+    numero: "03",
+    titulo: "Drenagem Linfática",
+    descricao:
+      "Massagem especializada que estimula o sistema linfático, reduz inchaço e melhora a circulação.",
+    duracao: "60 min",
+    preco: "R$ 150",
+    slug: "drenagem-linfatica",
+    inclusos: [
+      "Manobras linfáticas",
+      "Redução de inchaço",
+      "Melhora da circulação",
+      "Relaxamento corporal",
+    ],
+  },
+  {
+    numero: "04",
+    titulo: "Massagem Redutora",
+    descricao:
+      "Técnica intensiva focada na eliminação de medidas e combate à celulite com resultados visíveis.",
+    duracao: "60 min",
+    preco: "R$ 150",
+    slug: "massagem-redutora",
+    inclusos: [
+      "Técnica modeladora",
+      "Combate à celulite",
+      "Redução de medidas",
+      "Creme redutor",
+    ],
   },
 ];
-
 interface ServicosProps {
   onSelectServico: (slug: string) => void;
 }
@@ -47,7 +98,7 @@ export default function Servicos({ onSelectServico }: ServicosProps) {
 
         {/* Layout adaptativo — centralizado quando há poucos itens */}
         <div
-          className={`grid gap-6 ${servicos.length === 1 ? "grid-cols-1 max-w-md" : servicos.length === 2 ? "grid-cols-1 md:grid-cols-2 max-w-2xl" : "grid-cols-1 md:grid-cols-3"}`}
+          className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${servicos.length === 1 ? "grid-cols-1 max-w-md" : servicos.length === 2 ? "grid-cols-1 md:grid-cols-1 max-w-2xl" : "grid-cols-1 md:grid-cols-3"}`}
         >
           {servicos.map((servico) => (
             <div
@@ -93,12 +144,7 @@ export default function Servicos({ onSelectServico }: ServicosProps) {
               <div
                 className={`flex flex-col gap-2 py-6 border-y ${servico.destaque ? "border-bordeaux-400" : "border-bordeaux-50"}`}
               >
-                {[
-                  "Higienização profunda",
-                  "Extração de cravos",
-                  "Máscara hidratante",
-                  "Protetor solar",
-                ].map((item) => (
+                {servico.inclusos.map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <div
                       className={`w-1 h-1 rounded-full ${servico.destaque ? "bg-golden-400" : "bg-bordeaux-300"}`}

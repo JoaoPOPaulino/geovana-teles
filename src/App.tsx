@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Agendamento from "./pages/Agendamento";
 import Contato from "./pages/Contato";
 import Layout from "./components/layout/Layout";
+import Catalogo from "./components/Catalogo";
 
 export default function App() {
   return (
@@ -11,7 +12,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/agendamento" element={<Agendamento />} />
         <Route path="/contato" element={<Contato />} />
+        <Route path="/catalogo" element={<Catalogo />} />
       </Routes>
     </Layout>
-  )
+  );
 }

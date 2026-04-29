@@ -12,23 +12,23 @@ export default function Hero() {
       <div className="flex items-center gap-3 mb-6 md:mb-8">
         <div className="w-8 md:w-12 h-px bg-golden-400" />
         <p className="text-golden-600 text-xs font-medium tracking-[0.2em] md:tracking-[0.3em] uppercase">
-          Estética Facial
+          Estética & Bem-estar
         </p>
         <div className="w-8 md:w-12 h-px bg-golden-400" />
       </div>
       {/* Título */}
       <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-medium text-mauve-900 mb-4 leading-tight max-w-3xl">
-        Cuide da sua pele com{" "}
+        Realce sua beleza com{" "}
         <span className="text-bordeaux-600 italic block sm:inline">
-          quem entende de você
+          quem cuida de você
         </span>
       </h1>
       {/* Subtítulo */}
       <p className="text-mauve-800 text-sm md:text-lg max-w-xs md:max-w-sm mt-4 mb-8 md:mb-10 leading-relaxed font-light opacity-70">
-        Limpeza de pele profissional em Palmas, TO. Agende seu horário de forma
-        rápida e simples.
+        Estética facial e corporal profissional em Palmas, TO. Agende seu
+        horário de forma rápida e simples.
       </p>
-      {/* Botões */}
+
       {/* Botões */}
       <div className="flex flex-col sm:flex-row gap-3 w-full max-w-65 sm:max-w-none sm:w-auto">
         <Link

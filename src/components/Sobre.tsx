@@ -44,21 +44,21 @@ export default function Sobre() {
             </h2>
 
             <p className="text-mauve-800 leading-relaxed mb-4 md:mb-6 font-light opacity-80 text-sm md:text-base">
-              Olá! Sou Geovana Teles, especializada em limpeza de pele
-              profissional. Acredito que cuidar da pele vai além da estética — é
-              um ato de amor próprio.
+              Olá! Sou Geovana Teles, profissional especializada em tratamentos
+              faciais e corporais. Acredito que cuidar do corpo vai além da
+              estética — é um ato de amor próprio.
             </p>
 
             <p className="text-mauve-800 leading-relaxed mb-8 md:mb-10 font-light opacity-80 text-sm md:text-base">
-              Trabalho com técnicas modernas e produtos de qualidade para
-              garantir resultados visíveis e duradouros, sempre priorizando o
-              conforto e bem-estar de cada cliente.
+              Ofereço limpeza de pele, massagem relaxante, drenagem linfática e
+              massagem redutora, sempre com técnicas modernas e produtos de
+              qualidade, priorizando o conforto e bem-estar de cada cliente.
             </p>
 
             {/* Diferenciais */}
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               {[
-                { numero: "3+", label: "anos de experiência" },
+                { numero: "2+", label: "anos de experiência" },
                 { numero: "200+", label: "clientes atendidas" },
                 { numero: "100%", label: "produtos naturais" },
                 { numero: "5★", label: "avaliação média" },
