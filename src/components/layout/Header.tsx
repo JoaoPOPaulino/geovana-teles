@@ -3,9 +3,10 @@ import { useState } from "react";
 
 const links = [
   { label: "Início", to: "/" },
+  { label: "Serviços", to: "/servicos" },
   { label: "Agendamento", to: "/agendamento" },
   { label: "Contato", to: "/contato" },
-  { label: "Catálogo", to: "/catalogo" }
+  { label: "Catálogo", to: "/catalogo" },
 ];
 
 export default function Header() {

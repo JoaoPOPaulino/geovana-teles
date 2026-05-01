@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import geovana from "../assets/geovana.jpg";
 
 const servicos = [
+  // ── SERVIÇOS AVULSOS ────────────────────────────────────────────────────
   {
     numero: "01",
     titulo: "Limpeza de Pele",
@@ -61,6 +62,102 @@ const servicos = [
       "Combate à celulite",
       "Redução de medidas",
       "Creme redutor",
+    ],
+  },
+  {
+    numero: "05",
+    titulo: "Criolipólise",
+    descricao:
+      "Tratamento não invasivo que elimina gordura localizada através do resfriamento controlado das células de gordura.",
+    duracao: "60 min",
+    preco: "R$ 499",
+    slug: "criolipólise",
+    inclusos: [
+      "Avaliação da área tratada",
+      "Aplicação do aparelho de criolipolise",
+      "Massagem pós-procedimento",
+      "Orientações de cuidados",
+    ],
+  },
+  {
+    numero: "06",
+    titulo: "Heccus",
+    descricao:
+      "Tecnologia de ultrassom microfocado que promove firmeza, contorno corporal e redução de medidas com resultados progressivos.",
+    duracao: "45 min",
+    preco: "Consulte",
+    slug: "heccus",
+    inclusos: [
+      "Ultrassom microfocado",
+      "Firmeza e contorno corporal",
+      "Redução de medidas",
+      "Sem tempo de recuperação",
+    ],
+  },
+  {
+    numero: "07",
+    titulo: "Radiofrequência",
+    descricao:
+      "Estimula o colágeno e melhora a flacidez da pele com energia térmica profunda, proporcionando rejuvenescimento facial e corporal.",
+    duracao: "45 min",
+    preco: "Consulte",
+    slug: "radiofrequencia",
+    inclusos: [
+      "Estimulação de colágeno",
+      "Melhora da flacidez",
+      "Rejuvenescimento",
+      "Resultado progressivo",
+    ],
+  },
+
+  // ── PACOTES ─────────────────────────────────────────────────────────────
+  {
+    numero: "P1",
+    titulo: "Pacote Massagem Relaxante",
+    descricao:
+      "10 sessões de massagem relaxante para um relaxamento profundo e duradouro. Ideal para quem busca bem-estar constante.",
+    duracao: "1h / sessão",
+    preco: "R$ 967",
+    slug: "pacote-massagem-relaxante",
+    pacote: true,
+    inclusos: [
+      "10 sessões de 1 hora",
+      "Óleos essenciais premium",
+      "Ambiente climatizado",
+      "Técnica de relaxamento profundo",
+    ],
+  },
+  {
+    numero: "P2",
+    titulo: "Protocolo Verão",
+    descricao:
+      "5 sessões de massagem redutora no abdômen combinadas com 5 sessões de Heccus para resultados visíveis e duradouros.",
+    duracao: "45 min / sessão",
+    preco: "R$ 799",
+    slug: "protocolo-verao",
+    pacote: true,
+    destaque: false,
+    inclusos: [
+      "5 sessões de massagem redutora abdominal",
+      "5 sessões de Heccus",
+      "Redução de medidas",
+      "Contorno corporal",
+    ],
+  },
+  {
+    numero: "P3",
+    titulo: "Heccus + Radiofrequência",
+    descricao:
+      "Combinação poderosa de 5 sessões de Heccus e 5 de Radiofrequência para firmeza, contorno e rejuvenescimento.",
+    duracao: "45 min / sessão",
+    preco: "R$ 699",
+    slug: "heccus-radiofrequencia",
+    pacote: true,
+    inclusos: [
+      "5 sessões de Heccus",
+      "5 sessões de Radiofrequência",
+      "10 min de drenagem linfática por sessão (brinde)",
+      "Firmeza e contorno corporal",
     ],
   },
 ];
@@ -134,9 +231,9 @@ export default function Catalogo() {
       `}</style>
 
       {/* Botão de download — aponta para o PDF estático em /public */}
-      <div className="fixed bottom-8 right-8 z-50">
+      <div className="fixed bottom-24 right-6 z-50">
         <a
-          href="/Geovana Teles - Estética & Bem-estar.pdf"
+          href="/catalogo-geovana-teles.pdf"
           download="Catalogo_Geovana_Teles.pdf"
           className="flex items-center gap-3 bg-bordeaux-600 text-white px-7 py-4 rounded-full text-sm font-medium tracking-wide shadow-xl shadow-bordeaux-100 hover:bg-bordeaux-800 hover:-translate-y-0.5 transition-all duration-300"
         >

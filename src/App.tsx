@@ -4,12 +4,14 @@ import Agendamento from "./pages/Agendamento";
 import Contato from "./pages/Contato";
 import Layout from "./components/layout/Layout";
 import Catalogo from "./components/Catalogo";
+import Servicos from "./pages/Servicos";
 
 export default function App() {
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/servicos" element={<Servicos />} />
         <Route path="/agendamento" element={<Agendamento />} />
         <Route path="/contato" element={<Contato />} />
         <Route path="/catalogo" element={<Catalogo />} />
