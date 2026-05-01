@@ -34,13 +34,6 @@ const servicos = [
     duracao: "60 min",
     preco: "R$ 499",
   },
-  { slug: "heccus", titulo: "Heccus", duracao: "45 min", preco: "Consulte" },
-  {
-    slug: "radiofrequencia",
-    titulo: "Radiofrequência",
-    duracao: "45 min",
-    preco: "Consulte",
-  },
   // Pacotes
   {
     slug: "pacote-massagem-relaxante",

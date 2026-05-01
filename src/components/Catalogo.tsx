@@ -1,8 +1,8 @@
 import { useRef, useEffect } from "react";
 import geovana from "../assets/geovana.jpg";
 
-const servicos = [
-  // ── SERVIÇOS AVULSOS ────────────────────────────────────────────────────
+// ── SERVIÇOS AVULSOS ──────────────────────────────────────────────────────
+const avulsos = [
   {
     numero: "01",
     titulo: "Limpeza de Pele",
@@ -15,8 +15,8 @@ const servicos = [
     inclusos: [
       "Higienização profunda",
       "Extração de cravos",
-      "Máscara hidratante",
-      "Protetor solar",
+      "Recuperação da barreira cutânea",
+      "Protocolo personalizado por tipo de pele",
     ],
   },
   {
@@ -28,10 +28,10 @@ const servicos = [
     preco: "R$ 150",
     slug: "massagem-relaxante",
     inclusos: [
-      "Óleos essenciais",
-      "Ambiente climatizado",
-      "Técnica de relaxamento",
-      "Alívio de tensões",
+      "Alívio de tensões musculares",
+      "Redução do estresse e ansiedade",
+      "Melhora da qualidade do sono",
+      "Sensação de leveza e bem-estar",
     ],
   },
   {
@@ -43,10 +43,10 @@ const servicos = [
     preco: "R$ 150",
     slug: "drenagem-linfatica",
     inclusos: [
-      "Manobras linfáticas",
-      "Redução de inchaço",
-      "Melhora da circulação",
-      "Relaxamento corporal",
+      "Redução de inchaço e retenção hídrica",
+      "Melhora da circulação sanguínea",
+      "Eliminação de toxinas",
+      "Sensação de leveza nas pernas",
     ],
   },
   {
@@ -58,10 +58,10 @@ const servicos = [
     preco: "R$ 150",
     slug: "massagem-redutora",
     inclusos: [
-      "Técnica modeladora",
+      "Redução de medidas progressiva",
       "Combate à celulite",
-      "Redução de medidas",
-      "Creme redutor",
+      "Modelagem e contorno corporal",
+      "Melhora da textura da pele",
     ],
   },
   {
@@ -71,105 +71,71 @@ const servicos = [
       "Tratamento não invasivo que elimina gordura localizada através do resfriamento controlado das células de gordura.",
     duracao: "60 min",
     preco: "R$ 499",
-    slug: "criolipólise",
+    slug: "criolipolise",
     inclusos: [
-      "Avaliação da área tratada",
-      "Aplicação do aparelho de criolipolise",
-      "Massagem pós-procedimento",
-      "Orientações de cuidados",
+      "Eliminação de gordura localizada",
+      "Redução de medidas sem cirurgia",
+      "Resultados progressivos e duradouros",
+      "Sem downtime — retorne às atividades imediatamente",
     ],
   },
-  {
-    numero: "06",
-    titulo: "Heccus",
-    descricao:
-      "Tecnologia de ultrassom microfocado que promove firmeza, contorno corporal e redução de medidas com resultados progressivos.",
-    duracao: "45 min",
-    preco: "Consulte",
-    slug: "heccus",
-    inclusos: [
-      "Ultrassom microfocado",
-      "Firmeza e contorno corporal",
-      "Redução de medidas",
-      "Sem tempo de recuperação",
-    ],
-  },
-  {
-    numero: "07",
-    titulo: "Radiofrequência",
-    descricao:
-      "Estimula o colágeno e melhora a flacidez da pele com energia térmica profunda, proporcionando rejuvenescimento facial e corporal.",
-    duracao: "45 min",
-    preco: "Consulte",
-    slug: "radiofrequencia",
-    inclusos: [
-      "Estimulação de colágeno",
-      "Melhora da flacidez",
-      "Rejuvenescimento",
-      "Resultado progressivo",
-    ],
-  },
+];
 
-  // ── PACOTES ─────────────────────────────────────────────────────────────
+// ── PACOTES ───────────────────────────────────────────────────────────────
+const pacotes = [
   {
     numero: "P1",
     titulo: "Pacote Massagem Relaxante",
     descricao:
-      "10 sessões de massagem relaxante para um relaxamento profundo e duradouro. Ideal para quem busca bem-estar constante.",
+      "10 sessões de massagem relaxante de 1 hora cada. Ideal para quem busca bem-estar constante com economia.",
     duracao: "1h / sessão",
     preco: "R$ 967",
     slug: "pacote-massagem-relaxante",
-    pacote: true,
     inclusos: [
-      "10 sessões de 1 hora",
-      "Óleos essenciais premium",
-      "Ambiente climatizado",
-      "Técnica de relaxamento profundo",
+      "Alívio contínuo de tensões e estresse",
+      "Melhora progressiva da qualidade do sono",
+      "Bem-estar duradouro com economia",
+      "Óleos essenciais premium em todas as sessões",
     ],
   },
   {
     numero: "P2",
     titulo: "Protocolo Verão",
     descricao:
-      "5 sessões de massagem redutora no abdômen combinadas com 5 sessões de Heccus para resultados visíveis e duradouros.",
+      "Massagem redutora abdominal + Heccus terapia para perda de gordura localizada e definição do abdômen · 5 sessões cada",
     duracao: "45 min / sessão",
     preco: "R$ 799",
     slug: "protocolo-verao",
-    pacote: true,
-    destaque: false,
     inclusos: [
-      "5 sessões de massagem redutora abdominal",
-      "5 sessões de Heccus",
-      "Redução de medidas",
-      "Contorno corporal",
+      "Redução de medidas visível",
+      "Abdômen mais definido e firme",
+      "Eliminação de gordura localizada",
+      "Melhora da circulação e do contorno corporal",
     ],
   },
   {
     numero: "P3",
     titulo: "Heccus + Radiofrequência",
     descricao:
-      "Combinação poderosa de 5 sessões de Heccus e 5 de Radiofrequência para firmeza, contorno e rejuvenescimento.",
+      "Combinação de 5 sessões de Heccus e 5 de Radiofrequência para firmeza, contorno e rejuvenescimento.",
     duracao: "45 min / sessão",
     preco: "R$ 699",
     slug: "heccus-radiofrequencia",
-    pacote: true,
     inclusos: [
-      "5 sessões de Heccus",
-      "5 sessões de Radiofrequência",
-      "10 min de drenagem linfática por sessão (brinde)",
-      "Firmeza e contorno corporal",
+      "Redução de gordura localizada",
+      "Eliminação da flacidez",
+      "Firmeza e contorno corporal definido",
+      "🎁 Brinde: 10 min de drenagem por sessão",
     ],
   },
 ];
 
-// Largura real do catálogo em px (210mm a 96dpi)
 const CATALOGO_WIDTH_PX = 794;
 
 export default function Catalogo() {
   const catalogoRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  // ── Escala responsiva no mobile ──────────────────────────────────────────
   useEffect(() => {
     const el = catalogoRef.current;
     const wrapper = wrapperRef.current;
@@ -181,9 +147,6 @@ export default function Catalogo() {
         el.style.transform = `scale(${scale})`;
         el.style.transformOrigin = "top left";
         el.style.width = `${CATALOGO_WIDTH_PX}px`;
-
-        // Ajusta a altura do wrapper para não criar espaço vazio
-        // (scale() não altera o layout flow, então precisamos fazer isso manualmente)
         const naturalHeight = el.scrollHeight;
         wrapper.style.height = `${naturalHeight * scale}px`;
         wrapper.style.overflow = "hidden";
@@ -196,41 +159,227 @@ export default function Catalogo() {
       }
     };
 
-    // Aguarda fontes e imagens carregarem antes de calcular alturas
     const timeout = setTimeout(adjust, 300);
     window.addEventListener("resize", adjust);
-
     return () => {
       clearTimeout(timeout);
       window.removeEventListener("resize", adjust);
     };
   }, []);
 
+  // ── helpers de estilo ────────────────────────────────────────────────────
+  const cardStyle = (destaque: boolean, pacote: boolean) => ({
+    backgroundColor: destaque ? "#650033" : pacote ? "#1A0A12" : "#FFFFFF",
+    border: destaque || pacote ? "none" : "1px solid #E8C0D3",
+    borderRadius: "16px",
+    padding: "22px",
+    position: "relative" as const,
+    display: "flex",
+    flexDirection: "column" as const,
+    gap: "12px",
+  });
+
+  const numColor = (destaque: boolean, pacote: boolean) =>
+    destaque ? "#8B0044" : pacote ? "#3D001F" : "#E8C0D3";
+
+  const titleColor = (destaque: boolean, pacote: boolean) =>
+    destaque || pacote ? "#FFFFFF" : "#1A0A12";
+
+  const descColor = (destaque: boolean, pacote: boolean) =>
+    destaque ? "#E8C0D3" : pacote ? "rgba(255,255,255,0.6)" : "#4A3840";
+
+  const dividerColor = (destaque: boolean, pacote: boolean) =>
+    destaque ? "#8B0044" : pacote ? "#2A1020" : "#F5E6EE";
+
+  const dotColor = (destaque: boolean, pacote: boolean) =>
+    destaque || pacote ? "#C8973A" : "#8B0044";
+
+  const itemColor = (destaque: boolean, pacote: boolean) =>
+    destaque ? "#E8C0D3" : pacote ? "rgba(255,255,255,0.55)" : "#4A3840";
+
+  const durationColor = (destaque: boolean, pacote: boolean) =>
+    destaque ? "#E8C0D3" : pacote ? "rgba(255,255,255,0.4)" : "#4A3840";
+
+  const priceColor = (destaque: boolean, pacote: boolean) =>
+    destaque ? "#F7DFB5" : pacote ? "#C8973A" : "#650033";
+
+  // ── Card ─────────────────────────────────────────────────────────────────
+  const Card = ({
+    s,
+    destaque = false,
+    pacote = false,
+  }: {
+    s: (typeof avulsos)[0];
+    destaque?: boolean;
+    pacote?: boolean;
+  }) => (
+    <div style={cardStyle(destaque, pacote)}>
+      {destaque && (
+        <div
+          style={{
+            position: "absolute",
+            top: "-11px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            backgroundColor: "#C8973A",
+            color: "#FFF",
+            fontSize: "8px",
+            fontWeight: 600,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            padding: "3px 12px",
+            borderRadius: "999px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Destaque
+        </div>
+      )}
+      {pacote && (
+        <div
+          style={{
+            position: "absolute",
+            top: "-11px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            backgroundColor: "#C8973A",
+            color: "#FFF",
+            fontSize: "8px",
+            fontWeight: 600,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            padding: "3px 12px",
+            borderRadius: "999px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Pacote
+        </div>
+      )}
+
+      <span
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "40px",
+          fontWeight: 400,
+          lineHeight: 1,
+          color: numColor(destaque, pacote),
+        }}
+      >
+        {s.numero}
+      </span>
+
+      <div>
+        <h3
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: "19px",
+            fontWeight: 500,
+            color: titleColor(destaque, pacote),
+            margin: "0 0 6px",
+          }}
+        >
+          {s.titulo}
+        </h3>
+        <p
+          style={{
+            fontSize: "10.5px",
+            lineHeight: 1.6,
+            fontWeight: 300,
+            color: descColor(destaque, pacote),
+            opacity: destaque ? 1 : 0.75,
+            margin: 0,
+          }}
+        >
+          {s.descricao}
+        </p>
+      </div>
+
+      <div
+        style={{
+          borderTop: `1px solid ${dividerColor(destaque, pacote)}`,
+          borderBottom: `1px solid ${dividerColor(destaque, pacote)}`,
+          padding: "8px 0",
+          display: "flex",
+          flexDirection: "column",
+          gap: "5px",
+        }}
+      >
+        {s.inclusos.map((item) => (
+          <div
+            key={item}
+            style={{ display: "flex", alignItems: "flex-start", gap: "7px" }}
+          >
+            <div
+              style={{
+                width: "4px",
+                height: "4px",
+                borderRadius: "50%",
+                backgroundColor: dotColor(destaque, pacote),
+                flexShrink: 0,
+                marginTop: "4px",
+              }}
+            />
+            <span
+              style={{
+                fontSize: "10px",
+                fontWeight: 300,
+                color: itemColor(destaque, pacote),
+              }}
+            >
+              {item}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "10px",
+            color: durationColor(destaque, pacote),
+            opacity: 0.6,
+          }}
+        >
+          {s.duracao}
+        </span>
+        <span
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: "24px",
+            fontWeight: 500,
+            color: priceColor(destaque, pacote),
+          }}
+        >
+          {s.preco}
+        </span>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <style>{`
-        /* ── FORCE BACKGROUNDS & COLORS ON PRINT ── */
-        #catalogo-print,
-        #catalogo-print * {
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
+
+        #catalogo-print, #catalogo-print * {
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
           color-adjust: exact !important;
         }
 
-
-
         @media screen and (max-width: 860px) {
-          /*
-           * O JS aplica o scale() e ajusta a altura do wrapper.
-           * Aqui apenas evitamos scroll horizontal na página.
-           */
-          body {
-            overflow-x: hidden;
-          }
+          body { overflow-x: hidden; }
         }
       `}</style>
 
-      {/* Botão de download — aponta para o PDF estático em /public */}
+      {/* Botão download */}
       <div className="fixed bottom-24 right-6 z-50">
         <a
           href="/catalogo-geovana-teles.pdf"
@@ -254,13 +403,7 @@ export default function Catalogo() {
         </a>
       </div>
 
-      {/* ══════════════════════════════════════════════════════════════════ */}
-      {/*  WRAPPER — controla a altura quando escalonado no mobile          */}
-      {/* ══════════════════════════════════════════════════════════════════ */}
       <div ref={wrapperRef}>
-        {/* ════════════════════════════════════════════════════════════════ */}
-        {/*  DOCUMENTO DO CATÁLOGO                                          */}
-        {/* ════════════════════════════════════════════════════════════════ */}
         <div
           id="catalogo-print"
           ref={catalogoRef}
@@ -268,14 +411,12 @@ export default function Catalogo() {
             fontFamily: "'Inter', sans-serif",
             maxWidth: "210mm",
             margin: "0 auto",
-            display: "block",
           }}
         >
-          {/* ───────────────────────────────────────────────────────────── */}
+          {/* ══════════════════════════════════════════════════════════════ */}
           {/* PÁGINA 1 — CAPA                                               */}
-          {/* ───────────────────────────────────────────────────────────── */}
+          {/* ══════════════════════════════════════════════════════════════ */}
           <div
-            className="catalogo-page"
             style={{
               backgroundColor: "#650033",
               minHeight: "297mm",
@@ -285,7 +426,6 @@ export default function Catalogo() {
               overflow: "hidden",
             }}
           >
-            {/* Blobs decorativos */}
             <div
               style={{
                 position: "absolute",
@@ -323,7 +463,6 @@ export default function Catalogo() {
               }}
             />
 
-            {/* Barra superior */}
             <div
               style={{
                 padding: "40px 56px 0",
@@ -367,7 +506,6 @@ export default function Catalogo() {
               </span>
             </div>
 
-            {/* Hero: texto à esquerda / foto à direita */}
             <div
               style={{
                 flex: 1,
@@ -379,7 +517,6 @@ export default function Catalogo() {
                 gap: "48px",
               }}
             >
-              {/* Esquerda: texto */}
               <div style={{ flex: 1 }}>
                 <div
                   style={{
@@ -428,8 +565,6 @@ export default function Catalogo() {
                   Estética facial e corporal profissional em Palmas, TO. Cuidado
                   com a pele que transforma.
                 </p>
-
-                {/* Stats */}
                 <div style={{ display: "flex", gap: "36px" }}>
                   {[
                     { n: "3+", label: "anos de experiência" },
@@ -463,9 +598,7 @@ export default function Catalogo() {
                 </div>
               </div>
 
-              {/* Direita: foto */}
               <div style={{ flexShrink: 0, position: "relative" }}>
-                {/* Moldura dourada deslocada */}
                 <div
                   style={{
                     position: "absolute",
@@ -480,6 +613,7 @@ export default function Catalogo() {
                 <img
                   src={geovana}
                   alt="Geovana Teles"
+                  crossOrigin="anonymous"
                   style={{
                     width: "200px",
                     height: "270px",
@@ -491,7 +625,6 @@ export default function Catalogo() {
                     zIndex: 1,
                   }}
                 />
-                {/* Badge */}
                 <div
                   style={{
                     position: "absolute",
@@ -499,7 +632,7 @@ export default function Catalogo() {
                     left: "50%",
                     transform: "translateX(-50%)",
                     backgroundColor: "#C8973A",
-                    color: "#FFFFFF",
+                    color: "#FFF",
                     fontSize: "9px",
                     fontWeight: 500,
                     letterSpacing: "0.2em",
@@ -510,12 +643,11 @@ export default function Catalogo() {
                     zIndex: 2,
                   }}
                 >
-                  Esteticista
+                  Estética facial e corporal
                 </div>
               </div>
             </div>
 
-            {/* Barra inferior */}
             <div
               style={{
                 borderTop: "1px solid rgba(200,151,58,0.2)",
@@ -547,17 +679,14 @@ export default function Catalogo() {
             </div>
           </div>
 
-          {/* ───────────────────────────────────────────────────────────── */}
-          {/* PÁGINA 2 — SERVIÇOS                                          */}
-          {/* ───────────────────────────────────────────────────────────── */}
-          <div
-            className="catalogo-page"
-            style={{ backgroundColor: "#FAFAF9", minHeight: "297mm" }}
-          >
+          {/* ══════════════════════════════════════════════════════════════ */}
+          {/* PÁGINA 2 — SERVIÇOS AVULSOS                                   */}
+          {/* ══════════════════════════════════════════════════════════════ */}
+          <div style={{ backgroundColor: "#FAFAF9", minHeight: "297mm" }}>
             <div
               style={{
                 backgroundColor: "#F5E6EE",
-                padding: "44px 56px 36px",
+                padding: "36px 56px 28px",
                 borderBottom: "1px solid #E8C0D3",
               }}
             >
@@ -566,7 +695,7 @@ export default function Catalogo() {
                   display: "flex",
                   alignItems: "center",
                   gap: "12px",
-                  marginBottom: "14px",
+                  marginBottom: "10px",
                 }}
               >
                 <div
@@ -591,7 +720,7 @@ export default function Catalogo() {
               <h2
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "44px",
+                  fontSize: "40px",
                   fontWeight: 500,
                   color: "#1A0A12",
                   margin: 0,
@@ -604,165 +733,94 @@ export default function Catalogo() {
 
             <div
               style={{
-                padding: "36px 56px",
+                padding: "28px 48px",
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-                gap: "20px",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                gap: "16px",
               }}
             >
-              {servicos.map((s) => (
-                <div
-                  key={s.slug}
-                  style={{
-                    backgroundColor: s.destaque ? "#650033" : "#FFFFFF",
-                    border: s.destaque ? "none" : "1px solid #E8C0D3",
-                    borderRadius: "16px",
-                    padding: "26px",
-                    position: "relative",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "14px",
-                  }}
-                >
-                  {s.destaque && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "-14px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        backgroundColor: "#C8973A",
-                        color: "#FFFFFF",
-                        fontSize: "9px",
-                        fontWeight: 500,
-                        letterSpacing: "0.2em",
-                        textTransform: "uppercase",
-                        padding: "5px 16px",
-                        borderRadius: "999px",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      Destaque
-                    </div>
-                  )}
-
-                  <span
-                    style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontSize: "44px",
-                      fontWeight: 400,
-                      lineHeight: 1,
-                      color: s.destaque ? "#8B0044" : "#E8C0D3",
-                    }}
-                  >
-                    {s.numero}
-                  </span>
-
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "'Cormorant Garamond', serif",
-                        fontSize: "21px",
-                        fontWeight: 500,
-                        color: s.destaque ? "#FFFFFF" : "#1A0A12",
-                        margin: "0 0 7px",
-                      }}
-                    >
-                      {s.titulo}
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: "11.5px",
-                        lineHeight: 1.6,
-                        fontWeight: 300,
-                        color: s.destaque ? "#E8C0D3" : "#4A3840",
-                        opacity: s.destaque ? 1 : 0.7,
-                        margin: 0,
-                      }}
-                    >
-                      {s.descricao}
-                    </p>
-                  </div>
-
-                  <div
-                    style={{
-                      borderTop: `1px solid ${s.destaque ? "#8B0044" : "#F5E6EE"}`,
-                      borderBottom: `1px solid ${s.destaque ? "#8B0044" : "#F5E6EE"}`,
-                      padding: "10px 0",
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "5px",
-                    }}
-                  >
-                    {s.inclusos.map((item) => (
-                      <div
-                        key={item}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "8px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "4px",
-                            height: "4px",
-                            borderRadius: "50%",
-                            backgroundColor: s.destaque ? "#C8973A" : "#8B0044",
-                            flexShrink: 0,
-                          }}
-                        />
-                        <span
-                          style={{
-                            fontSize: "10.5px",
-                            fontWeight: 300,
-                            color: s.destaque ? "#E8C0D3" : "#4A3840",
-                            opacity: s.destaque ? 0.9 : 0.65,
-                          }}
-                        >
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "baseline",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        color: s.destaque ? "#E8C0D3" : "#4A3840",
-                        opacity: 0.5,
-                      }}
-                    >
-                      {s.duracao}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: "'Cormorant Garamond', serif",
-                        fontSize: "26px",
-                        fontWeight: 500,
-                        color: s.destaque ? "#F7DFB5" : "#650033",
-                      }}
-                    >
-                      {s.preco}
-                    </span>
-                  </div>
-                </div>
+              {avulsos.map((s) => (
+                <Card key={s.slug} s={s} destaque={!!s.destaque} />
               ))}
             </div>
           </div>
 
-          {/* ───────────────────────────────────────────────────────────── */}
-          {/* PÁGINA 3 — CONTRACAPA                                        */}
-          {/* ───────────────────────────────────────────────────────────── */}
+          {/* ══════════════════════════════════════════════════════════════ */}
+          {/* PÁGINA 3 — PACOTES                                            */}
+          {/* ══════════════════════════════════════════════════════════════ */}
+          <div style={{ backgroundColor: "#FAFAF9", minHeight: "297mm" }}>
+            <div
+              style={{ backgroundColor: "#1A0A12", padding: "36px 56px 28px" }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  marginBottom: "10px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "36px",
+                    height: "1px",
+                    backgroundColor: "#C8973A",
+                  }}
+                />
+                <span
+                  style={{
+                    color: "#C8973A",
+                    fontSize: "10px",
+                    fontWeight: 500,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Pacotes
+                </span>
+              </div>
+              <h2
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "40px",
+                  fontWeight: 500,
+                  color: "#FFFFFF",
+                  margin: "0 0 6px",
+                  lineHeight: 1.1,
+                }}
+              >
+                Mais resultado, melhor preço
+              </h2>
+              <p
+                style={{
+                  fontSize: "12px",
+                  color: "rgba(255,255,255,0.45)",
+                  fontWeight: 300,
+                  margin: 0,
+                }}
+              >
+                Combine tratamentos e potencialize os resultados com economia.
+              </p>
+            </div>
+
+            <div
+              style={{
+                padding: "28px 48px",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                gap: "16px",
+              }}
+            >
+              {pacotes.map((s) => (
+                <Card key={s.slug} s={s} pacote />
+              ))}
+            </div>
+          </div>
+
+          {/* ══════════════════════════════════════════════════════════════ */}
+          {/* PÁGINA 4 — CONTRACAPA                                         */}
+          {/* ══════════════════════════════════════════════════════════════ */}
           <div
-            className="catalogo-page"
             style={{
               backgroundColor: "#1A0A12",
               minHeight: "297mm",
@@ -847,7 +905,6 @@ export default function Catalogo() {
                   Contato & Agendamento
                 </span>
               </div>
-
               <h2
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",

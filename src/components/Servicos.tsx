@@ -82,40 +82,10 @@ const servicos: Servico[] = [
     preco: "R$ 499",
     slug: "criolipolise",
     inclusos: [
-      "Avaliação da área tratada",
-      "Aplicação do aparelho de criolipólise",
-      "Massagem pós-procedimento",
-      "Orientações de cuidados",
-    ],
-  },
-  {
-    numero: "06",
-    titulo: "Heccus",
-    descricao:
-      "Tecnologia de ultrassom microfocado que promove firmeza, contorno corporal e redução de medidas com resultados progressivos.",
-    duracao: "45 min",
-    preco: "Consulte",
-    slug: "heccus",
-    inclusos: [
-      "Ultrassom microfocado",
-      "Firmeza e contorno corporal",
-      "Redução de medidas",
-      "Sem tempo de recuperação",
-    ],
-  },
-  {
-    numero: "07",
-    titulo: "Radiofrequência",
-    descricao:
-      "Estimula o colágeno e melhora a flacidez com energia térmica profunda, proporcionando rejuvenescimento facial e corporal.",
-    duracao: "45 min",
-    preco: "Consulte",
-    slug: "radiofrequencia",
-    inclusos: [
-      "Estimulação de colágeno",
-      "Melhora da flacidez",
-      "Rejuvenescimento",
-      "Resultado progressivo",
+      "Eliminação de gordura localizada",
+      "Redução de medidas sem cirurgia",
+      "Resultados progressivos e duradouros",
+      "Sem downtime — retorne às atividades imediatamente",
     ],
   },
 
@@ -140,21 +110,21 @@ const servicos: Servico[] = [
     numero: "P2",
     titulo: "Protocolo Verão",
     descricao:
-      "5 sessões de massagem redutora abdominal + 5 sessões de Heccus para resultados visíveis antes do verão.",
+      "Massagem redutora abdominal + Heccus terapia para perda de gordura localizada e definição do abdômen · 5 sessões cada",
     duracao: "45 min / sessão",
     preco: "R$ 799",
     slug: "protocolo-verao",
     pacote: true,
     inclusos: [
-      "5 sessões de massagem redutora abdominal",
-      "5 sessões de Heccus",
-      "Redução de medidas",
-      "Contorno corporal definido",
+      "Redução de medidas visível",
+      "Abdômen mais definido e firme",
+      "Eliminação de gordura localizada",
+      "Melhora da circulação e do contorno corporal",
     ],
   },
   {
     numero: "P3",
-    titulo: "Heccus + Radiofrequência",
+    titulo: "Combinação Poderosa de Heccus + Radiofrequência",
     descricao:
       "Combinação poderosa de 5 sessões de Heccus e 5 de Radiofrequência para firmeza, contorno e rejuvenescimento.",
     duracao: "45 min / sessão",
@@ -162,10 +132,10 @@ const servicos: Servico[] = [
     slug: "heccus-radiofrequencia",
     pacote: true,
     inclusos: [
-      "5 sessões de Heccus",
-      "5 sessões de Radiofrequência",
-      "🎁 Brinde: 10 min de drenagem por sessão",
+      "Redução de gordura localizada",
+      "Eliminação da flacidez",
       "Firmeza e contorno corporal",
+      "🎁 Brinde: 10 min de drenagem por sessão",
     ],
   },
 ];
