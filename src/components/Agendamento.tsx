@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 // Espelho dos serviços — mantém o visual consistente com o resto do site
 const servicos = [
+  // Avulsos
   {
     slug: "limpeza-de-pele-simples",
     titulo: "Limpeza de Pele",
@@ -36,24 +37,59 @@ const servicos = [
   },
   // Pacotes
   {
-    slug: "pacote-massagem-relaxante",
-    titulo: "Pacote Massagem Relaxante",
+    slug: "ritual-anti-stress",
+    titulo: "Ritual Anti-Stress",
     duracao: "1h / sessão",
-    preco: "R$ 967",
+    preco: "R$ 997",
     pacote: true,
   },
   {
-    slug: "protocolo-verao",
-    titulo: "Protocolo Verão",
-    duracao: "45 min / sessão",
-    preco: "R$ 799",
+    slug: "projeto-desinchar",
+    titulo: "Projeto Desinchar 30 Dias",
+    duracao: "1h / sessão",
+    preco: "R$ 750",
     pacote: true,
   },
   {
-    slug: "heccus-radiofrequencia",
-    titulo: "Heccus + Radiofrequência",
+    slug: "protocolo-barriga-zero",
+    titulo: "Protocolo Barriga Zero",
     duracao: "45 min / sessão",
-    preco: "R$ 699",
+    preco: "R$ 950",
+    pacote: true,
+  },
+  {
+    slug: "pacote-premium-corporal",
+    titulo: "Pacote Premium Corporal",
+    duracao: "Variável",
+    preco: "R$ 1.300",
+    pacote: true,
+  },
+  {
+    slug: "pele-sempre-limpa",
+    titulo: "Pele Sempre Limpa",
+    duracao: "1h / sessão",
+    preco: "R$ 330",
+    pacote: true,
+  },
+  {
+    slug: "tratamento-pele-perfeita",
+    titulo: "Tratamento Pele Perfeita",
+    duracao: "1h / sessão",
+    preco: "R$ 550",
+    pacote: true,
+  },
+  {
+    slug: "plano-mensal",
+    titulo: "Plano Mensal",
+    duracao: "2h / mês",
+    preco: "R$ 250 / mês",
+    pacote: true,
+  },
+  {
+    slug: "firmeza-contorno",
+    titulo: "Firmeza & Contorno",
+    duracao: "45 min / sessão",
+    preco: "R$ 700",
     pacote: true,
   },
 ];

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import geovana from "../assets/geovana.jpg";
+import html2pdf from "html2pdf.js";
 
-// ── SERVIÇOS AVULSOS ──────────────────────────────────────────────────────
 const avulsos = [
   {
     numero: "01",
@@ -81,51 +81,125 @@ const avulsos = [
   },
 ];
 
-// ── PACOTES ───────────────────────────────────────────────────────────────
 const pacotes = [
   {
     numero: "P1",
-    titulo: "Pacote Massagem Relaxante",
+    titulo: "Ritual Anti-Stress",
     descricao:
-      "10 sessões de massagem relaxante de 1 hora cada. Ideal para quem busca bem-estar constante com economia.",
+      "10 massagens relaxantes com 1 sessão bônus inclusa. Para quem busca bem-estar constante com economia real.",
     duracao: "1h / sessão",
-    preco: "R$ 967",
-    slug: "pacote-massagem-relaxante",
+    preco: "R$ 997",
+    slug: "ritual-anti-stress",
     inclusos: [
-      "Alívio contínuo de tensões e estresse",
-      "Melhora progressiva da qualidade do sono",
-      "Bem-estar duradouro com economia",
-      "Óleos essenciais premium em todas as sessões",
+      "10 sessões de 1 hora",
+      "🎁 1 sessão bônus",
+      "Óleos essenciais premium",
+      "Ambiente climatizado",
     ],
   },
   {
     numero: "P2",
-    titulo: "Protocolo Verão",
+    titulo: "Projeto Desinchar 30 Dias",
     descricao:
-      "Massagem redutora abdominal + Heccus terapia para perda de gordura localizada e definição do abdômen · 5 sessões cada",
-    duracao: "45 min / sessão",
-    preco: "R$ 799",
-    slug: "protocolo-verao",
+      "6 drenagens linfáticas + 2 massagens relaxantes + avaliação personalizada. Resultados em 30 dias.",
+    duracao: "1h / sessão",
+    preco: "R$ 750",
+    slug: "projeto-desinchar",
     inclusos: [
-      "Redução de medidas visível",
-      "Abdômen mais definido e firme",
-      "Eliminação de gordura localizada",
-      "Melhora da circulação e do contorno corporal",
+      "6 sessões de drenagem linfática",
+      "2 massagens relaxantes",
+      "Avaliação personalizada",
+      "Redução de inchaço e melhora da circulação",
     ],
   },
   {
     numero: "P3",
-    titulo: "Heccus + Radiofrequência",
+    titulo: "Protocolo Barriga Zero",
     descricao:
-      "Combinação de 5 sessões de Heccus e 5 de Radiofrequência para firmeza, contorno e rejuvenescimento.",
+      "5 massagens redutoras + 5 sessões de Heccus para eliminar gordura localizada e definir o abdômen.",
     duracao: "45 min / sessão",
-    preco: "R$ 699",
-    slug: "heccus-radiofrequencia",
+    preco: "R$ 950",
+    slug: "protocolo-barriga-zero",
     inclusos: [
-      "Redução de gordura localizada",
-      "Eliminação da flacidez",
-      "Firmeza e contorno corporal definido",
-      "🎁 Brinde: 10 min de drenagem por sessão",
+      "5 massagens redutoras",
+      "5 sessões de Heccus",
+      "🎁 Bônus: drenagem por sessão",
+      "Redução de medidas e definição abdominal",
+    ],
+  },
+  {
+    numero: "P4",
+    titulo: "Pacote Premium Corporal",
+    descricao:
+      "O protocolo mais completo: criolipólise + drenagens + massagens redutoras para transformação total do corpo.",
+    duracao: "Variável",
+    preco: "R$ 1.300",
+    slug: "pacote-premium-corporal",
+    inclusos: [
+      "1 sessão de criolipólise",
+      "5 drenagens linfáticas",
+      "3 massagens redutoras",
+      "Protocolo personalizado de transformação",
+    ],
+  },
+  {
+    numero: "P5",
+    titulo: "Pele Sempre Limpa",
+    descricao:
+      "3 limpezas de pele mensais + avaliação personalizada. Manutenção contínua para uma pele sempre saudável.",
+    duracao: "1h / sessão",
+    preco: "R$ 330",
+    slug: "pele-sempre-limpa",
+    inclusos: [
+      "3 limpezas de pele (1 por mês)",
+      "Avaliação personalizada",
+      "Higienização e extração profissional",
+      "Protocolo adaptado ao seu tipo de pele",
+    ],
+  },
+  {
+    numero: "P6",
+    titulo: "Tratamento Pele Perfeita",
+    descricao:
+      "5 limpezas de pele + 1 limpeza bônus + protocolo personalizado. O caminho completo para uma pele renovada.",
+    duracao: "1h / sessão",
+    preco: "R$ 550",
+    slug: "tratamento-pele-perfeita",
+    inclusos: [
+      "5 limpezas de pele",
+      "🎁 1 limpeza bônus",
+      "Protocolo personalizado",
+      "Acompanhamento da evolução da pele",
+    ],
+  },
+  {
+    numero: "P7",
+    titulo: "Plano Mensal",
+    descricao:
+      "1 limpeza de pele + 1 drenagem ou massagem por mês. Cuidado regular com o melhor custo-benefício.",
+    duracao: "2h / mês",
+    preco: "R$ 250/mês",
+    slug: "plano-mensal",
+    inclusos: [
+      "1 limpeza de pele por mês",
+      "1 drenagem linfática ou massagem",
+      "Atendimento personalizado",
+      "Parcelamento facilitado",
+    ],
+  },
+  {
+    numero: "P8",
+    titulo: "Firmeza & Contorno",
+    descricao:
+      "Tecnologia + drenagem para acelerar resultados visíveis no corpo.",
+    duracao: "45 min / sessão",
+    preco: "R$ 700",
+    slug: "firmeza-contorno",
+    inclusos: [
+      "5 sessões de Heccus",
+      "5 sessões de radiofrequência",
+      "🎁 10 min de drenagem em cada sessão",
+      "Melhora da firmeza e redução de medidas",
     ],
   },
 ];
@@ -167,7 +241,6 @@ export default function Catalogo() {
     };
   }, []);
 
-  // ── helpers de estilo ────────────────────────────────────────────────────
   const cardStyle = (destaque: boolean, pacote: boolean) => ({
     backgroundColor: destaque ? "#650033" : pacote ? "#1A0A12" : "#FFFFFF",
     border: destaque || pacote ? "none" : "1px solid #E8C0D3",
@@ -181,29 +254,21 @@ export default function Catalogo() {
 
   const numColor = (destaque: boolean, pacote: boolean) =>
     destaque ? "#8B0044" : pacote ? "#3D001F" : "#E8C0D3";
-
   const titleColor = (destaque: boolean, pacote: boolean) =>
     destaque || pacote ? "#FFFFFF" : "#1A0A12";
-
   const descColor = (destaque: boolean, pacote: boolean) =>
     destaque ? "#E8C0D3" : pacote ? "rgba(255,255,255,0.6)" : "#4A3840";
-
   const dividerColor = (destaque: boolean, pacote: boolean) =>
     destaque ? "#8B0044" : pacote ? "#2A1020" : "#F5E6EE";
-
   const dotColor = (destaque: boolean, pacote: boolean) =>
     destaque || pacote ? "#C8973A" : "#8B0044";
-
   const itemColor = (destaque: boolean, pacote: boolean) =>
     destaque ? "#E8C0D3" : pacote ? "rgba(255,255,255,0.55)" : "#4A3840";
-
   const durationColor = (destaque: boolean, pacote: boolean) =>
     destaque ? "#E8C0D3" : pacote ? "rgba(255,255,255,0.4)" : "#4A3840";
-
   const priceColor = (destaque: boolean, pacote: boolean) =>
     destaque ? "#F7DFB5" : pacote ? "#C8973A" : "#650033";
 
-  // ── Card ─────────────────────────────────────────────────────────────────
   const Card = ({
     s,
     destaque = false,
@@ -363,6 +428,31 @@ export default function Catalogo() {
     </div>
   );
 
+  const handleDownload = () => {
+    const el = catalogoRef.current;
+    if (!el) return;
+
+    const prevTransform = el.style.transform;
+    const prevWidth = el.style.width;
+    el.style.transform = "";
+    el.style.width = "";
+
+    html2pdf()
+      .set({
+        margin: 0,
+        filename: "Catalogo_Geovana_Teles.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, allowTaint: true },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      })
+      .from(el)
+      .save()
+      .then(() => {
+        el.style.transform = prevTransform;
+        el.style.width = prevWidth;
+      });
+  };
+
   return (
     <>
       <style>{`
@@ -381,9 +471,8 @@ export default function Catalogo() {
 
       {/* Botão download */}
       <div className="fixed bottom-24 right-6 z-50">
-        <a
-          href="/catalogo-geovana-teles.pdf"
-          download="Catalogo_Geovana_Teles.pdf"
+        <button
+          onClick={handleDownload}
           className="flex items-center gap-3 bg-bordeaux-600 text-white px-7 py-4 rounded-full text-sm font-medium tracking-wide shadow-xl shadow-bordeaux-100 hover:bg-bordeaux-800 hover:-translate-y-0.5 transition-all duration-300"
         >
           <svg
@@ -400,7 +489,7 @@ export default function Catalogo() {
             />
           </svg>
           Baixar catálogo (PDF)
-        </a>
+        </button>
       </div>
 
       <div ref={wrapperRef}>
@@ -750,7 +839,10 @@ export default function Catalogo() {
           {/* ══════════════════════════════════════════════════════════════ */}
           <div style={{ backgroundColor: "#FAFAF9", minHeight: "297mm" }}>
             <div
-              style={{ backgroundColor: "#1A0A12", padding: "36px 56px 28px" }}
+              style={{
+                backgroundColor: "#1A0A12",
+                padding: "36px 56px 28px",
+              }}
             >
               <div
                 style={{

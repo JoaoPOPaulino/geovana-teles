@@ -1,13 +1,34 @@
+function calcularDesconto(original: string, atual: string) {
+  const o = parseFloat(original.replace(/[^\d]/g, ""));
+  const a = parseFloat(atual.replace(/[^\d]/g, ""));
+
+  if (!o || !a) return "";
+
+  const economia = o - a;
+
+  return `R$ ${economia}`;
+}
+interface Promocao {
+  titulo: string;
+  badge: string;
+  precoPromocional?: string;
+  descricao?: string;
+  validade?: string;
+  ativo: boolean;
+}
+
 interface Servico {
   numero: string;
   titulo: string;
   descricao: string;
   duracao: string;
   preco: string;
+  precoOriginal?: string;
   destaque?: boolean;
   pacote?: boolean;
   slug: string;
   inclusos: string[];
+  promocao?: Promocao;
 }
 
 const servicos: Servico[] = [
@@ -27,6 +48,15 @@ const servicos: Servico[] = [
       "Recuperação da barreira cutânea",
       "Personalização do protocolo conforme o tipo de pele",
     ],
+    promocao: {
+      titulo: "Especial Dia das Mães",
+      badge: "🌷 Dia das Mães",
+      precoPromocional: "R$ 99",
+      descricao:
+        "O melhor presente não é algo que se guarda, é algo que se sente.",
+      validade: "Válido até o Dia das Mães (12/05/2026)",
+      ativo: true,
+    },
   },
   {
     numero: "02",
@@ -92,50 +122,138 @@ const servicos: Servico[] = [
   // ── PACOTES ───────────────────────────────────────────────────────────
   {
     numero: "P1",
-    titulo: "Pacote Massagem Relaxante",
+    titulo: "Ritual Anti-Stress",
     descricao:
-      "10 sessões de massagem relaxante de 1 hora cada. Ideal para quem busca bem-estar constante com economia.",
+      "10 massagens relaxantes com 1 sessão bônus inclusa. Para quem busca bem-estar constante com economia real.",
     duracao: "1h / sessão",
-    preco: "R$ 967",
-    slug: "pacote-massagem-relaxante",
+    preco: "R$ 997",
+    precoOriginal: "R$ 1.650",
+    slug: "ritual-anti-stress",
     pacote: true,
     inclusos: [
       "10 sessões de 1 hora",
+      "🎁 1 sessão bônus",
       "Óleos essenciais premium",
       "Ambiente climatizado",
-      "Técnica de relaxamento profundo",
     ],
   },
   {
     numero: "P2",
-    titulo: "Protocolo Verão",
+    titulo: "Projeto Desinchar 30 Dias",
     descricao:
-      "Massagem redutora abdominal + Heccus terapia para perda de gordura localizada e definição do abdômen · 5 sessões cada",
-    duracao: "45 min / sessão",
-    preco: "R$ 799",
-    slug: "protocolo-verao",
+      "6 drenagens linfáticas + 2 massagens relaxantes + avaliação personalizada. Resultados em 30 dias.",
+    duracao: "1h / sessão",
+    preco: "R$ 750",
+    precoOriginal: "R$ 1.200",
+    slug: "projeto-desinchar",
     pacote: true,
     inclusos: [
-      "Redução de medidas visível",
-      "Abdômen mais definido e firme",
-      "Eliminação de gordura localizada",
-      "Melhora da circulação e do contorno corporal",
+      "6 sessões de drenagem linfática",
+      "2 massagens relaxantes",
+      "Avaliação personalizada",
+      "Redução de inchaço e melhora da circulação",
     ],
   },
   {
     numero: "P3",
-    titulo: "Combinação Poderosa de Heccus + Radiofrequência",
+    titulo: "Protocolo Barriga Zero",
     descricao:
-      "Combinação poderosa de 5 sessões de Heccus e 5 de Radiofrequência para firmeza, contorno e rejuvenescimento.",
+      "5 massagens redutoras + 5 sessões de Heccus para eliminar gordura localizada e definir o abdômen.",
     duracao: "45 min / sessão",
-    preco: "R$ 699",
-    slug: "heccus-radiofrequencia",
+    preco: "R$ 950",
+    precoOriginal: "R$ 1.500",
+    slug: "protocolo-barriga-zero",
     pacote: true,
     inclusos: [
-      "Redução de gordura localizada",
-      "Eliminação da flacidez",
-      "Firmeza e contorno corporal",
-      "🎁 Brinde: 10 min de drenagem por sessão",
+      "5 massagens redutoras",
+      "5 sessões de Heccus",
+      "🎁 Bônus: drenagem por sessão",
+      "Redução de medidas e definição abdominal",
+    ],
+  },
+  {
+    numero: "P4",
+    titulo: "Pacote Premium Corporal",
+    descricao:
+      "O protocolo mais completo: criolipólise + drenagens + massagens redutoras para transformação total do corpo.",
+    duracao: "Variável",
+    preco: "R$ 1.300",
+    precoOriginal: "R$ 1.900",
+    slug: "pacote-premium-corporal",
+    pacote: true,
+    inclusos: [
+      "1 sessão de criolipólise",
+      "5 drenagens linfáticas",
+      "3 massagens redutoras",
+      "Protocolo personalizado de transformação",
+    ],
+  },
+  {
+    numero: "P5",
+    titulo: "Pele Sempre Limpa",
+    descricao:
+      "3 limpezas de pele mensais + avaliação personalizada. Manutenção contínua para uma pele sempre saudável.",
+    duracao: "1h / sessão",
+    preco: "R$ 330",
+    precoOriginal: "R$ 360",
+    slug: "pele-sempre-limpa",
+    pacote: true,
+    inclusos: [
+      "3 limpezas de pele (1 por mês)",
+      "Avaliação personalizada",
+      "Higienização e extração profissional",
+      "Protocolo adaptado ao seu tipo de pele",
+    ],
+  },
+  {
+    numero: "P6",
+    titulo: "Tratamento Pele Perfeita",
+    descricao:
+      "5 limpezas de pele + 1 limpeza bônus + protocolo personalizado. O caminho completo para uma pele renovada.",
+    duracao: "1h / sessão",
+    preco: "R$ 550",
+    precoOriginal: "R$ 720",
+    slug: "tratamento-pele-perfeita",
+    pacote: true,
+    inclusos: [
+      "5 limpezas de pele",
+      "🎁 1 limpeza bônus",
+      "Protocolo personalizado",
+      "Acompanhamento da evolução da pele",
+    ],
+  },
+  {
+    numero: "P7",
+    titulo: "Plano Mensal",
+    descricao:
+      "1 limpeza de pele + 1 drenagem ou massagem por mês. Cuidado regular com o melhor custo-benefício.",
+    duracao: "2h / mês",
+    preco: "R$ 250 / mês",
+    precoOriginal: "R$ 300",
+    slug: "plano-mensal",
+    pacote: true,
+    inclusos: [
+      "1 limpeza de pele por mês",
+      "1 drenagem linfática ou massagem",
+      "Atendimento personalizado",
+      "Parcelamento facilitado",
+    ],
+  },
+  {
+    numero: "P8",
+    titulo: "Firmeza & Contorno",
+    descricao:
+      "Protocolo completo para redução de gordura localizada e melhora da flacidez, deixando o corpo mais firme e definido.",
+    duracao: "45 min / sessão",
+    preco: "R$ 700",
+    precoOriginal: "R$ 1.000",
+    slug: "firmeza-contorno",
+    pacote: true,
+    inclusos: [
+      "5 sessões de Heccus",
+      "5 sessões de radiofrequência",
+      "🎁 Bônus: 10 min de drenagem por sessão",
+      "Melhora da firmeza e redução de medidas",
     ],
   },
 ];
@@ -234,16 +352,19 @@ function ServicoCard({
       `}
     >
       {/* Badge */}
-      {servico.destaque && (
+      {servico.promocao?.ativo ? (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-500 text-white text-xs px-5 py-1 rounded-full tracking-widest uppercase whitespace-nowrap">
+          {servico.promocao.badge}
+        </div>
+      ) : servico.destaque ? (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-golden-400 text-white text-xs px-5 py-1 rounded-full tracking-widest uppercase whitespace-nowrap">
           Serviço em destaque
         </div>
-      )}
-      {servico.pacote && (
+      ) : servico.pacote ? (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-golden-400 text-white text-xs px-5 py-1 rounded-full tracking-widest uppercase whitespace-nowrap">
           Pacote
         </div>
-      )}
+      ) : null}
 
       {/* Número */}
       <span
@@ -276,7 +397,9 @@ function ServicoCard({
                 : "text-mauve-800 opacity-60"
           }`}
         >
-          {servico.descricao}
+          {servico.promocao?.ativo && servico.promocao.descricao
+            ? servico.promocao.descricao
+            : servico.descricao}
         </p>
       </div>
 
@@ -315,6 +438,11 @@ function ServicoCard({
       </div>
 
       {/* Rodapé */}
+      {servico.promocao?.ativo && servico.promocao.validade && (
+        <span className="text-xs text-golden-200">
+          ⏳ {servico.promocao.validade}
+        </span>
+      )}
       <div className="flex items-center justify-between">
         <span
           className={`text-sm ${
@@ -336,7 +464,35 @@ function ServicoCard({
                 : "text-bordeaux-600"
           }`}
         >
-          {servico.preco}
+          {servico.promocao?.ativo ? (
+            <div className="flex flex-col items-end">
+              <span className="text-xs line-through opacity-60">
+                {servico.preco}
+              </span>
+              <span className="font-display text-3xl font-medium text-golden-300">
+                {servico.promocao.precoPromocional}
+              </span>
+            </div>
+          ) : (
+            <div className="flex flex-col items-end">
+              {servico.precoOriginal && (
+                <span className="text-xs line-through opacity-50">
+                  {servico.precoOriginal}
+                </span>
+              )}
+
+              <span className="font-display text-3xl font-medium">
+                {servico.preco}
+              </span>
+
+              {servico.precoOriginal && (
+                <span className="text-xs text-green-500 font-medium">
+                  Economize{" "}
+                  {calcularDesconto(servico.precoOriginal, servico.preco)}
+                </span>
+              )}
+            </div>
+          )}
         </span>
       </div>
 
@@ -350,7 +506,7 @@ function ServicoCard({
               : "bg-bordeaux-600 text-white hover:bg-bordeaux-800"
         }`}
       >
-        Agendar agora
+        {servico.promocao?.ativo ? "Garantir promoção" : "Agendar agora"}
       </button>
     </div>
   );
