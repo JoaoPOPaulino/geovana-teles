@@ -145,7 +145,7 @@ const servicos: Servico[] = [
     duracao: "1h / sessão",
     preco: "R$ 750",
     precoOriginal: "R$ 1.200",
-    slug: "projeto-desinchar",
+    slug: "projeto-desinchar-30-dias",
     pacote: true,
     inclusos: [
       "6 sessões de drenagem linfática",

@@ -8,7 +8,7 @@ const servicos = [
     slug: "limpeza-de-pele-simples",
     titulo: "Limpeza de Pele",
     duracao: "60 min",
-    preco: "R$ 120",
+    preco: "R$ 99",
     destaque: true,
   },
   {
@@ -44,7 +44,7 @@ const servicos = [
     pacote: true,
   },
   {
-    slug: "projeto-desinchar",
+    slug: "projeto-desinchar-30-dias",
     titulo: "Projeto Desinchar 30 Dias",
     duracao: "1h / sessão",
     preco: "R$ 750",
