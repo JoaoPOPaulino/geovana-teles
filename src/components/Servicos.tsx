@@ -54,7 +54,7 @@ const servicos: Servico[] = [
       precoPromocional: "R$ 99",
       descricao:
         "O melhor presente não é algo que se guarda, é algo que se sente.",
-      validade: "Válido até o Dia das Mães (12/05/2026)",
+      validade: "Válido até o Dia das Mães (31/05/2026)",
       ativo: true,
     },
   },
