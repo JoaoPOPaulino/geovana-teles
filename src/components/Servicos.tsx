@@ -39,7 +39,7 @@ const servicos: Servico[] = [
     descricao:
       "Higienização profunda, extração de cravos e hidratação. Ideal para manutenção mensal da pele.",
     duracao: "60 min",
-    preco: "R$ 120",
+    preco: "R$ 150",
     slug: "limpeza-de-pele-simples",
     destaque: true,
     inclusos: [
@@ -48,15 +48,6 @@ const servicos: Servico[] = [
       "Recuperação da barreira cutânea",
       "Personalização do protocolo conforme o tipo de pele",
     ],
-    promocao: {
-      titulo: "Especial Dia das Mães",
-      badge: "🌷 Dia das Mães",
-      precoPromocional: "R$ 99",
-      descricao:
-        "O melhor presente não é algo que se guarda, é algo que se sente.",
-      validade: "Válido até o Dia das Mães (31/05/2026)",
-      ativo: true,
-    },
   },
   {
     numero: "02",
