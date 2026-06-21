@@ -8,7 +8,7 @@ const servicos = [
     slug: "limpeza-de-pele-simples",
     titulo: "Limpeza de Pele",
     duracao: "60 min",
-    preco: "R$ 99",
+    preco: "R$ 120",
     destaque: true,
   },
   {

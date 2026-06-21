@@ -39,7 +39,7 @@ const servicos: Servico[] = [
     descricao:
       "Higienização profunda, extração de cravos e hidratação. Ideal para manutenção mensal da pele.",
     duracao: "60 min",
-    preco: "R$ 150",
+    preco: "R$ 120",
     slug: "limpeza-de-pele-simples",
     destaque: true,
     inclusos: [
